@@ -1,0 +1,100 @@
+﻿@model UmbracoMVCBackofficePages.Models.PersonViewModel
+
+<!doctype html>
+<html>
+<head>
+    <title>Example editor</title>
+   
+    <script src="~/umbraco_client/ui/jquery.js" type="text/javascript"></script>
+    <script src="~/umbraco_client/Application/NamespaceManager.js" type="text/javascript"></script>    <script src="~/umbraco_client/Application/UmbracoApplicationActions.js" type="text/javascript"></script>    <script src="~/umbraco_client/Application/UmbracoUtils.js" type="text/javascript"></script>    <script src="~/umbraco_client/Application/UmbracoClientManager.js" type="text/javascript"></script>    <script src="~/umbraco_client/ui/default.js" type="text/javascript"></script>
+    <link href="~/umbraco_client/ui/default.css" rel="stylesheet" />
+    <link href="~/umbraco_client/menuicon/style.css" rel="stylesheet" />
+    <link href="~/umbraco_client/panel/style.css" rel="stylesheet" />
+    <link href="~/umbraco_client/propertypane/style.css" rel="stylesheet" />
+    <link href="~/umbraco_client/scrollingmenu/style.css" rel="stylesheet" />
+    
+  
+
+    <style>
+
+        #save {
+            height: 26px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #save img {
+            padding: 0;
+            margin: 0;
+        }   
+    </style>
+    @if (TempData["success"] != null)
+    {
+        <script>
+            UmbClientMgr.mainWindow().UmbSpeechBubble.ShowMessage('save', 'Saved', 'successfully saved');
+        </script>
+    }
+</head>
+    <body>
+        
+        @using (Html.BeginForm("Edit", "Example"))
+        {
+        <div id="body_UmbracoPanel" class="panel" style="width:100%;">
+            <div class="boxhead">
+                <h2 id="body_UmbracoPanelLabel">Example Editor</h2>
+            </div>
+            <div class="boxbody">
+                <div id="body_UmbracoPanel_menubackground" class="menubar_panel">
+                    <span id="body_UmbracoPanel_menu">
+                        <table id="body_UmbracoPanel_menu_tableContainer">
+                            <tbody>
+                                <tr id="body_UmbracoPanel_menu_tableContainerRow">
+                                    <td id="body_UmbracoPanel_menu_tableContainerButtons">
+                                        <button type="submit" id="save">
+                                            <img src="~/umbraco/images/editor/save.gif" alt="Save Bundle" class="editorIcon"/>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </span>
+                </div>
+                <div id="body_UmbracoPanel_content" class="content">
+                    <div class="innerContent" id="body_UmbracoPanel_innerContent">
+                        <h2 class="propertypaneTitel">Details</h2>
+
+                        @Html.HiddenFor( m => m.Id)
+
+                        <div class="propertypane">
+                            <div>
+                                <div class="propertyItem">
+                                    <div class="propertyItemheader">@Html.LabelFor(m => m.FirstName)</div>
+                                    <div class="propertyItemContent">
+                                        @Html.EditorFor(m => m.FirstName)
+                                        @Html.ValidationMessageFor(m => m.FirstName)
+                                    </div>
+                                </div>
+
+                                <div class="propertyItem">
+                                    <div class="propertyItemheader">@Html.LabelFor(m => m.LastName)</div>
+                                    <div class="propertyItemContent">
+                                        @Html.EditorFor(m => m.LastName)
+                                         @Html.ValidationMessageFor(m => m.LastName)
+                                    </div>
+                                </div>
+
+                                <div class="propertyPaneFooter">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="boxfooter">
+                <div class="statusBar">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+        }
+    </body>
+</html>
