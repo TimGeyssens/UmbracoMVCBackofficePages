@@ -12,7 +12,7 @@ namespace UmbracoMVCBackofficePages
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapRoute(
-               name: "Bundle",
+               name: "ExampleMVCBackofficePages",
                url: "App_Plugins/UmbracoMVCBackofficePages/{action}/{id}",
                defaults: new { controller = "Example", action = "Index", id = UrlParameter.Optional }
            );

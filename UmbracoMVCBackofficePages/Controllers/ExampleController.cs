@@ -10,7 +10,6 @@ namespace UmbracoMVCBackofficePages.Controllers
 {
     public class ExampleController : UmbracoAuthorizedController
     {
-        
         public ActionResult Index(int id)
         {
             var p = Data.GetById(id);
@@ -33,6 +32,5 @@ namespace UmbracoMVCBackofficePages.Controllers
 
             return View("~/App_Plugins/UmbracoMVCBackofficePages/Views/Index.cshtml",person);
         }
-
     }
 }
